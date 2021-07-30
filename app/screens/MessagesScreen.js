@@ -1,7 +1,10 @@
-import React from 'react'
-import { FlatList, SafeAreaView, StyleSheet, Platform, StatusBar, StatusBarIOS } from 'react-native'
+import React, { useState } from 'react'
+import { FlatList } from 'react-native'
 import ListItem from '../components/ListItem'
-const messages = [
+import ListItemDeleteAction from '../components/ListItemDeleteAction'
+import ListItemSeperator from '../components/ListItemSeperator'
+import Screen from '../components/Screen'
+const initialMessages = [
     {
         id: 1,
         title: 'T1',
@@ -12,24 +15,51 @@ const messages = [
         id: 2,
         title: 'T2',
         description: 'D2',
-        image: require('../assets/1.jpg')
+        image: require('../assets/2.jpg')
     }
 ]
 const MessagesScreen = () => {
+
+    const [messages, setMessages] = useState(initialMessages)
+    const [refreshing, setRefreshing] = useState(false)
+    console.log(messages)
+    const handlePress = (item) => {
+        console.log('message selected', item)
+    }
+
+    const handleDelete = (message) => {
+        setMessages(messages.filter(m => m.id !== message.id));
+    }
+
     return (
-        <SafeAreaView style={styles.screen}>
+        <Screen>
             <FlatList
                 data={messages}
                 keyExtractor={message => message.id.toString()}
-                renderItem={({ item }) => <ListItem title={item.title} subTitle={item.description} image={item.image} />} />
-        </SafeAreaView>
+                renderItem={({ item }) => (
+                    <ListItem
+                        title={item.title}
+                        subTitle={item.description}
+                        image={item.image}
+                        onPress={() => handlePress(item)}
+                        renderRightActions={() => (
+                            <ListItemDeleteAction onPress={() => handleDelete(item)} />
+                        )}
+                    />
+                )}
+                ItemSeparatorComponent={() => <ListItemSeperator />}
+                refreshing={refreshing}
+                onRefresh={() => {
+                    setMessages([{
+                        id: 2,
+                        title: 'T2',
+                        description: 'D2',
+                        image: require('../assets/2.jpg')
+                    }])
+                }}
+            />
+        </Screen>
     )
 }
-
-const styles = StyleSheet.create({
-    screen: {
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
-    }
-})
 
 export default MessagesScreen

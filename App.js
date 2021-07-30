@@ -1,10 +1,14 @@
 import React from "react";
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import Card from './app/components/Card'
 import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
-import MessagesScreen from "./app/screens/MessagesScreen";
+import AccountScreen from "./app/screens/AccountScreen";
+import Icon from './app/components/Icon'
+import ListItem from './app/components/ListItem'
+import Screen from './app/components/Screen'
+import ListingsScreen from "./app/screens/ListingsScreen";
 
 export default function App() {
   // return <WelcomeScreen />;
@@ -14,6 +18,10 @@ export default function App() {
   //   <Card title='bbb' subTitle='250$' image={require("./app/assets/1.jpg")} />
   // </View>
   // return <ListingDetailsScreen />
-  return <MessagesScreen />
+  return <ListingsScreen />
+  // return (
+  //   <Screen>
+  //     <ListItem title="My Title" IconComponent={<Icon name="email" />} />
+  //   </Screen>)
 
 }
