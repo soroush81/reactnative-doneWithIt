@@ -1,44 +1,52 @@
-import React from 'react'
+import React from "react";
 import { StyleSheet, View, Image } from "react-native";
 
-import colors from '../config/colors'
-import AppText from '../components/AppText'
+import colors from "../config/colors";
+import AppText from "../components/AppText";
 
 const Card = ({ title, subTitle, image }) => {
-    return (
-        <View style={styles.card}>
-            <Image style={styles.image} source={image} />
-            <View style={styles.detailsContainer}>
-                <AppText style={styles.title}>{title}</AppText>
-                <AppText style={styles.subTitle}>{subTitle}</AppText>
-            </View>
-        </View>
-    )
-}
+  return (
+    <View style={styles.card}>
+      <Image style={styles.image} source={image} />
+      <View style={styles.detailsContainer}>
+        <AppText style={styles.title} numberOfLines={2}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium
+          deserunt voluptas debitis exercitationem accusantium sed velit itaque
+          accusamus perspiciatis iste eveniet excepturi quaerat numquam
+          architecto ab iusto, voluptates doloribus dignissimos? Omnis harum
+          repudiandae ipsam nam, id nulla eveniet cum voluptate similique est,
+          dolores explicabo quo soluta unde veniam! In eius distinctio excepturi
+          earum quasi maxime voluptatum culpa repudiandae. Quia, minus?{title}
+        </AppText>
+        <AppText style={styles.subTitle} numberOfLines={1}>
+          {subTitle}
+        </AppText>
+      </View>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-    card: {
-        borderRadius: 15,
-        backgroundColor: colors.white,
-        marginBottom: 20,
-        overflow: 'hidden'
+  card: {
+    borderRadius: 15,
+    backgroundColor: colors.white,
+    marginBottom: 20,
+    overflow: "hidden",
+  },
+  detailsContainer: {
+    padding: 20,
+  },
+  image: {
+    width: "100%",
+    height: 200,
+  },
+  subTitle: {
+    color: colors.secondary,
+    fontWeight: "bold",
+  },
+  title: {
+    marginBottom: 7,
+  },
+});
 
-    },
-    detailsContainer: {
-        padding: 20,
-    },
-    image: {
-        width: "100%",
-        height: 200
-    },
-    subTitle: {
-        color: colors.secondary,
-        fontWeight: "bold"
-    },
-    title: {
-        marginBottom: 7
-    }
-
-})
-
-export default Card
+export default Card;

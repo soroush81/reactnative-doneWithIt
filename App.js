@@ -6,13 +6,14 @@ import Card from './app/components/Card'
 import ListingDetailsScreen from "./app/screens/ListingDetailsScreen";
 import AccountScreen from "./app/screens/AccountScreen";
 import Icon from './app/components/Icon'
-import ListItem from './app/components/ListItem'
+import ListItem from './app/components/lists/ListItem'
 import Screen from './app/components/Screen'
 import LoginScreen from "./app/screens/LoginScreen";
 import AppTextInput from "./app/components/AppTextInput";
 import colors from "./app/config/colors";
 import AppPicker from "./app/components/AppPicker";
-import RegisterScreen from "./app/screens/RegisterScreen";
+import MessagesScreen from "./app/screens/MessagesScreen";
+import ListingsScreen from "./app/screens/ListingsScreen";
 import ListEditingScreen from "./app/screens/ListEditingScreen";
 
 const categories = [
@@ -33,6 +34,7 @@ export default function App() {
   //   <Card title='bbb' subTitle='250$' image={require("./app/assets/1.jpg")} />
   // </View>
   // return <ListingDetailsScreen />
+  // return <MessagesScreen />
   return <ListEditingScreen />
   // return (
   //   <Screen>
