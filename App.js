@@ -17,6 +17,7 @@ import ListingsScreen from "./app/screens/ListingsScreen";
 import ListEditingScreen from "./app/screens/ListEditingScreen";
 import * as ImagePicker from 'expo-image-picker'
 import * as Permissions from 'expo-permissions'
+import ImageInput from "./app/components/ImageInput";
 const categories = [
   { label: "Furniture", value: 1 },
   { label: "Clothing", value: 2 },
@@ -31,7 +32,7 @@ export default function App() {
   const requestPermission = async () => {
     // const result =  await Permissions.askAsync(Permissions.CAMERA, Permissions.LOCATION)
     // console.log(result)
-    const {granted} = await ImagePicker.requestCameraPermissionsAsync()
+    const { granted } = await ImagePicker.requestCameraPermissionsAsync()
     console.log(`the value is ${granted}`)
     if (!granted) alert('you need to enable permission to access the library')
   }
@@ -45,16 +46,20 @@ export default function App() {
       if (!result.cancelled)
         setImageUri(result.uri)
     } catch (error) {
-      console.log('failed to show image', error)      
+      console.log('failed to show image', error)
     }
   }
 
+
   return (
     <Screen>
-      <Button onPress={selectImage} title="select Image" />
-      <Image source={{uri:imageUri}} style={{width:200, height:200}} />
+      {/* <Button onPress={selectImage} title="select Image" />
+      <Image source={{uri:imageUri}} style={{width:200, height:200}} /> */}
+      <ImageInput
+        imageUri={imageUri}
+        onChangeImage={uri => setImageUri(uri)} onPress={selectImage} />
     </Screen>
-        )
+  )
   // return <WelcomeScreen />;
   //return <ViewImageScreen />;
   // return <View style={{ padding: 20, paddingTop: 100, backgroundColor: "#f8f4f4" }} >
@@ -63,7 +68,7 @@ export default function App() {
   // </View>
   // return <ListingDetailsScreen />
   // return <MessagesScreen />
- // return <ListEditingScreen />
+  // return <ListEditingScreen />
   // return (
   //   <Screen>
   //     <AppTextInput icon="email" placeholder="UserName" />
