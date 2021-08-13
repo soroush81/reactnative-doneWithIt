@@ -18,6 +18,7 @@ import ListEditingScreen from "./app/screens/ListEditingScreen";
 import * as ImagePicker from 'expo-image-picker'
 import * as Permissions from 'expo-permissions'
 import ImageInput from "./app/components/ImageInput";
+import ImageInputList from "./app/components/ImageInputList";
 const categories = [
   { label: "Furniture", value: 1 },
   { label: "Clothing", value: 2 },
@@ -25,39 +26,49 @@ const categories = [
 ]
 
 export default function App() {
-  const [isNew, setIsNew] = useState(false)
-  const [category, setCategory] = useState(categories[0])
-  const [imageUri, setImageUri] = useState();
+  // const [isNew, setIsNew] = useState(false)
+  // const [category, setCategory] = useState(categories[0])
+  // const [imageUri, setImageUri] = useState();
+  const [imageUris, setImageUris] = useState([]);
 
-  const requestPermission = async () => {
-    // const result =  await Permissions.askAsync(Permissions.CAMERA, Permissions.LOCATION)
-    // console.log(result)
-    const { granted } = await ImagePicker.requestCameraPermissionsAsync()
-    console.log(`the value is ${granted}`)
-    if (!granted) alert('you need to enable permission to access the library')
+  // const handlePress = () => {
+  //   if (!imageUri) selectImage();
+  //   else
+  //     Alert.alert('Delete', 'Are you sure you want to delete this image?',
+  //       [{ text: 'Yes', onPress: () => onChangeImage(null) },
+  //       { text: 'No' }
+  //       ])
+  // }
+
+  // const selectImage = async () => {
+  //   try {
+  //     const result = await ImagePicker.launchImageLibraryAsync({
+  //       mediaTypes: ImagePicker.MediaTypeOptions.Images,
+  //       quality: 0.5
+  //     })
+  //     if (!result.cancelled)
+  //       onChangeImage(result.uri)
+  //   } catch (error) {
+  //     console.log('failed to show image', error)
+  //   }
+  // }
+  const handleAdd = (uri) => {
+    setImageUris([...imageUris, uri])
   }
-  useEffect(() => {
-    requestPermission();
-  }, [])
 
-  const selectImage = async () => {
-    try {
-      const result = await ImagePicker.launchImageLibraryAsync()
-      if (!result.cancelled)
-        setImageUri(result.uri)
-    } catch (error) {
-      console.log('failed to show image', error)
-    }
+  const handleRemove = (uri) => {
+    const filtered = imageUris.filter(imageUri => imageUri !== uri)
+    setImageUris(filtered)
   }
-
 
   return (
     <Screen>
       {/* <Button onPress={selectImage} title="select Image" />
       <Image source={{uri:imageUri}} style={{width:200, height:200}} /> */}
-      <ImageInput
+      {/* <ImageInput
         imageUri={imageUri}
-        onChangeImage={uri => setImageUri(uri)} onPress={selectImage} />
+        onChangeImage={uri => setImageUri(uri)} onPress={selectImage} /> */}
+      <ImageInputList imageUris={imageUris} onAddImage={handleAdd} onRemoveImage={handleRemove} />
     </Screen>
   )
   // return <WelcomeScreen />;
