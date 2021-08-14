@@ -52,25 +52,25 @@ export default function App() {
   //     console.log('failed to show image', error)
   //   }
   // }
-  const handleAdd = (uri) => {
-    setImageUris([...imageUris, uri])
-  }
+  // const handleAdd = (uri) => {
+  //   setImageUris([...imageUris, uri])
+  // }
 
-  const handleRemove = (uri) => {
-    const filtered = imageUris.filter(imageUri => imageUri !== uri)
-    setImageUris(filtered)
-  }
+  // const handleRemove = (uri) => {
+  //   const filtered = imageUris.filter(imageUri => imageUri !== uri)
+  //   setImageUris(filtered)
+  // }
 
-  return (
-    <Screen>
-      {/* <Button onPress={selectImage} title="select Image" />
-      <Image source={{uri:imageUri}} style={{width:200, height:200}} /> */}
-      {/* <ImageInput
-        imageUri={imageUri}
-        onChangeImage={uri => setImageUri(uri)} onPress={selectImage} /> */}
-      <ImageInputList imageUris={imageUris} onAddImage={handleAdd} onRemoveImage={handleRemove} />
-    </Screen>
-  )
+  // return (
+  //   <Screen>
+  //     {/* <Button onPress={selectImage} title="select Image" />
+  //     <Image source={{uri:imageUri}} style={{width:200, height:200}} /> */}
+  //     {/* <ImageInput
+  //       imageUri={imageUri}
+  //       onChangeImage={uri => setImageUri(uri)} onPress={selectImage} /> */}
+  //     <ImageInputList imageUris={imageUris} onAddImage={handleAdd} onRemoveImage={handleRemove} />
+  //   </Screen>
+  // )
   // return <WelcomeScreen />;
   //return <ViewImageScreen />;
   // return <View style={{ padding: 20, paddingTop: 100, backgroundColor: "#f8f4f4" }} >
@@ -79,7 +79,7 @@ export default function App() {
   // </View>
   // return <ListingDetailsScreen />
   // return <MessagesScreen />
-  // return <ListEditingScreen />
+  return <ListEditingScreen />
   // return (
   //   <Screen>
   //     <AppTextInput icon="email" placeholder="UserName" />
