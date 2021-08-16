@@ -20,10 +20,11 @@ const menuItems = [
         icon: {
             name: "message",
             backgroundColor: colors.secondary
-        }
+        },
+        targetScreen: "Messages"
     }
 ]
-const AccountScreen = () => {
+const AccountScreen = ({ navigation }) => {
     return (
         <Screen style={styles.screen}>
             <View style={styles.container}>
@@ -42,6 +43,7 @@ const AccountScreen = () => {
                                     name={item.icon.name}
                                     size={50} IconColor={colors.white}
                                     backgroundColor={item.icon.backgroundColor} />}
+                            onPress={() => navigation.navigate(item.targetScreen)}
                         />
                     )} />
             </View>
