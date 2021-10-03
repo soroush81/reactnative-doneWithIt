@@ -25,6 +25,9 @@ const categories = [
   { label: "Cameras", value: 3 },
 ]
 
+/*
+	soooooodeh
+*/
 export default function App() {
   // const [isNew, setIsNew] = useState(false)
   // const [category, setCategory] = useState(categories[0])
