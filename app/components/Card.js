@@ -1,28 +1,36 @@
 import React from "react";
-import { StyleSheet, View, Image } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  TouchableWithoutFeedback,
+} from "react-native";
 
 import colors from "../config/colors";
 import AppText from "../components/AppText";
 
-const Card = ({ title, subTitle, image }) => {
+const Card = ({ title, subTitle, image, onPress }) => {
   return (
-    <View style={styles.card}>
-      <Image style={styles.image} source={image} />
-      <View style={styles.detailsContainer}>
-        <AppText style={styles.title} numberOfLines={2}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium
-          deserunt voluptas debitis exercitationem accusantium sed velit itaque
-          accusamus perspiciatis iste eveniet excepturi quaerat numquam
-          architecto ab iusto, voluptates doloribus dignissimos? Omnis harum
-          repudiandae ipsam nam, id nulla eveniet cum voluptate similique est,
-          dolores explicabo quo soluta unde veniam! In eius distinctio excepturi
-          earum quasi maxime voluptatum culpa repudiandae. Quia, minus?{title}
-        </AppText>
-        <AppText style={styles.subTitle} numberOfLines={1}>
-          {subTitle}
-        </AppText>
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View style={styles.card}>
+        <Image style={styles.image} source={image} />
+        <View style={styles.detailsContainer}>
+          <AppText style={styles.title} numberOfLines={1}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium
+            deserunt voluptas debitis exercitationem accusantium sed velit
+            itaque accusamus perspiciatis iste eveniet excepturi quaerat numquam
+            architecto ab iusto, voluptates doloribus dignissimos? Omnis harum
+            repudiandae ipsam nam, id nulla eveniet cum voluptate similique est,
+            dolores explicabo quo soluta unde veniam! In eius distinctio
+            excepturi earum quasi maxime voluptatum culpa repudiandae. Quia,
+            minus?{title}
+          </AppText>
+          <AppText style={styles.subTitle} numberOfLines={1}>
+            {subTitle}
+          </AppText>
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
